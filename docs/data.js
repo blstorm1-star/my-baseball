@@ -1,7 +1,7 @@
 window.BASEBALL_DATA = {
  "owner": "나의 사회인야구",
  "myName": "",
- "updated": "2026-11-26 17:37",
+ "updated": "2026-11-26 17:54",
  "seasons": [
   2026,
   2025
