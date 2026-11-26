@@ -1,0 +1,40 @@
+{
+  "owner": "나의 사회인야구",
+  "myName": "",
+  "seasons": [2026, 2025],
+  "teams": [
+    {
+      "id": "daedanada",
+      "name": "대다나다",
+      "site": "alb",
+      "league": "안양리그 (ALB)",
+      "division": "일요리그",
+      "sc": 1,
+      "competitions": ["연합회장기", "시장기", "플레이오프"]
+    },
+    {
+      "id": "edge",
+      "name": "Edge",
+      "site": "sh",
+      "league": "소망주말리그",
+      "division": "소망일요3부",
+      "teamSeq": 274
+    },
+    {
+      "id": "bohemian",
+      "name": "보헤미안피닉스",
+      "site": "sh",
+      "league": "에코주말리그 · 안산 한양대리그",
+      "division": "에코토요(토로) · 토요4부",
+      "teamSeq": 453,
+      "extra": [
+        {
+          "site": "안산한양대리그",
+          "base": "https://www.xn--2i0bk9gough4h86ftma262g.kr",
+          "teamSeq": 16,
+          "league": "안산 한양대리그"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나의 사회인야구">
+<meta property="og:description" content="대다나다 · Edge · 보헤미안피닉스 경기기록·선수기록 (업데이트 2026-11-26 17:37)">
+<meta name="description" content="대다나다 · Edge · 보헤미안피닉스 경기기록·선수기록 (업데이트 2026-11-26 17:37)">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>나의 사회인야구</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  :root {
+    --bg: #f4f5f1; --panel: #ffffff; --ink: #17201b; --muted: #66706a; --line: #e2e5df;
+    --accent: #1f6b45; --accent-soft: #e5f1ea; --win: #1f7a4d; --loss: #c0392b; --draw: #8a8f8b;
+    --me: #fff4cc; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+  }
+  :root { --err-bg: #fff1ef; --err-fg: #8a2b20; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101412; --panel: #181e1b; --ink: #e8ece9; --muted: #98a29c; --line: #29312d;
+      --accent: #5cc48d; --accent-soft: #1d3127; --win: #5cc48d; --loss: #ff7a6b; --draw: #9aa09c;
+      --me: #3b3416; --shadow: none; --err-bg: #3a1f1b; --err-fg: #ffb3a8; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101412; --panel: #181e1b; --ink: #e8ece9; --muted: #98a29c; --line: #29312d;
+    --accent: #5cc48d; --accent-soft: #1d3127; --win: #5cc48d; --loss: #ff7a6b; --draw: #9aa09c;
+    --me: #3b3416; --shadow: none; --err-bg: #3a1f1b; --err-fg: #ffb3a8; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 60px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  header.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+  header.top h1 { margin: 0; font-size: 28px; letter-spacing: -0.02em; }
+  header.top .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  select, input[type=search] { font: inherit; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
+
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 26px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); cursor: pointer; transition: border-color .15s; position: relative; overflow: hidden; }
+  .card:hover, .card.active { border-color: var(--tc); }
+  .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--tc); }
+  .card .lg { color: var(--muted); font-size: 12.5px; }
+  .card h2 { margin: 2px 0 10px; font-size: 20px; }
+  .rec { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .rec b { font-size: 26px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .rec span { color: var(--muted); font-size: 13px; }
+  .form { display: flex; gap: 4px; margin-top: 12px; }
+  .dot { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: 11.5px; font-weight: 700; color: #fff; }
+  .dot.승 { background: var(--win); } .dot.패 { background: var(--loss); } .dot.무 { background: var(--draw); }
+  .last { margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+  .teamhead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 18px 20px 0; }
+  .teamhead h2 { margin: 0; font-size: 22px; }
+  .teamhead .links a { font-size: 13px; margin-left: 12px; }
+  .tabs { display: flex; gap: 4px; padding: 14px 20px 0; border-bottom: 1px solid var(--line); }
+  .tab { border: 0; background: none; font: inherit; color: var(--muted); padding: 9px 14px; border-bottom: 2px solid transparent; cursor: pointer; font-weight: 600; }
+  .tab.active { color: var(--ink); border-bottom-color: var(--tc); }
+  .body { padding: 16px 20px 22px; }
+  .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .toolbar .grow { flex: 1; }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  .sumrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .stat { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; }
+  .stat .k { font-size: 12px; color: var(--muted); }
+  .stat .v { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 14px; }
+  th, td { padding: 8px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  th { font-size: 12.5px; color: var(--muted); font-weight: 600; background: var(--panel); position: sticky; top: 0; cursor: pointer; user-select: none; }
+  th.sorted { color: var(--ink); }
+  th.sorted::after { content: " ▾"; } th.sorted.asc::after { content: " ▴"; }
+  td.l, th.l { text-align: left; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: var(--accent-soft); }
+  tr.me td { background: var(--me) !important; font-weight: 700; }
+  .res { font-weight: 700; } .res.승 { color: var(--win); } .res.패 { color: var(--loss); } .res.무, .res.예정 { color: var(--draw); }
+  .score { font-weight: 700; }
+  .badge { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--muted); margin-left: 6px; }
+  .empty { padding: 30px; text-align: center; color: var(--muted); }
+  footer { margin-top: 30px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+  .err { background: var(--err-bg); color: var(--err-fg); border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+  .panel, .card, .cards > * { min-width: 0; }
+  .tab:focus-visible, .card:focus-visible, th:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 860px) { .cards { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .wrap { padding-block: 18px 40px; } header.top h1 { font-size: 22px; } th, td { padding: 7px 8px; font-size: 13px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="owner">나의 사회인야구</h1>
+      <div class="sub" id="updated"></div>
+    </div>
+    <div class="controls">
+      <label class="muted" for="season">시즌</label>
+      <select id="season"></select>
+      <input type="search" id="me" placeholder="내 이름 (강조 표시)" size="14">
+    </div>
+  </header>
+
+  <div id="errors"></div>
+  <section class="cards" id="cards"></section>
+  <section class="panel" id="detail"></section>
+
+  <footer>
+    데이터 출처: 안양시야구연합회(alb.or.kr), 시흥시 야구소프트볼협회(shbaseball.co.kr).<br>
+    기록은 각 리그 사이트에서 가져온 것이며, 위쪽의 업데이트 시각 기준입니다.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+let D = window.BASEBALL_DATA;
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+const COLORS = { daedanada: "#1f6b45", edge: "#2456a6", bohemian: "#9a3d8a" };
+const state = { season: null, team: null, tab: "games", comp: null, sort: {}, me: "" };
+
+const BAT_COLS = [
+  ["no","#"],["name","선수","l"],["G","경기"],["PA","타석"],["AB","타수"],["H","안타"],["2B","2루타"],["3B","3루타"],["HR","홈런"],
+  ["RBI","타점"],["R","득점"],["SB","도루"],["BB","볼넷"],["HBP","사구"],["SO","삼진"],["AVG","타율"],["OBP","출루율"],["SLG","장타율"],["OPS","OPS"]];
+const PIT_COLS = [
+  ["no","#"],["name","선수","l"],["G","경기"],["W","승"],["L","패"],["SV","세"],["HLD","홀드"],["IP","이닝"],["H","피안타"],["HR","피홈런"],
+  ["BB","볼넷"],["HBP","사구"],["SO","탈삼진"],["R","실점"],["ER","자책"],["ERA","평균자책"]];
+const RATE = new Set(["AVG","OBP","SLG","OPS"]);
+const ASC_DEFAULT = new Set(["ERA","name","no"]);
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = (k, v) => {
+  if (v === null || v === undefined || v === "") return "-";
+  if (RATE.has(k)) return Number(v).toFixed(3).replace(/^0/, "");
+  if (k === "ERA") return Number(v).toFixed(2);
+  return v;
+};
+const ipOuts = v => { const m = String(v||"").match(/^(\d+)(?: ([12])\/3)?$/); return m ? +m[1]*3 + +(m[2]||0) : 0; };
+const isMe = name => state.me && name && name.replace(/\s/g,"") === state.me.replace(/\s/g,"");
+
+function seasonGames(t) { return t.games.filter(g => g.season === state.season); }
+function record(games) {
+  const done = games.filter(g => g.result !== "예정");
+  const w = done.filter(g => g.result === "승").length, l = done.filter(g => g.result === "패").length;
+  const d = done.filter(g => g.result === "무").length;
+  const rf = done.reduce((a,g) => a + (g.rf||0), 0), ra = done.reduce((a,g) => a + (g.ra||0), 0);
+  return { n: done.length, w, l, d, pct: (w+l) ? w/(w+l) : 0, rf, ra };
+}
+
+function init() {
+  if (!D) { $("#detail").innerHTML = '<div class="empty">data.js 가 없습니다. 업데이트.bat 을 먼저 실행하세요.</div>'; return; }
+  $("#owner").textContent = D.owner || "나의 사회인야구";
+  document.title = D.owner || document.title;
+  $("#updated").textContent = `기록 업데이트: ${D.updated}`;
+  state.me = store.get("bb-me") || D.myName || "";
+  $("#me").value = state.me;
+  $("#season").innerHTML = D.seasons.map(s => `<option>${s}</option>`).join("");
+  state.season = D.seasons[0];
+  state.team = D.teams[0].id;
+  if (D.errors && D.errors.length)
+    $("#errors").innerHTML = `<div class="err">일부 기록을 가져오지 못했습니다: ${D.errors.map(esc).join(" / ")}</div>`;
+  $("#season").onchange = e => { state.season = +e.target.value; state.comp = null; render(); };
+  $("#me").oninput = e => { state.me = e.target.value.trim(); store.set("bb-me", state.me); render(); };
+  render();
+}
+
+function render() { renderCards(); renderDetail(); }
+
+function renderCards() {
+  $("#cards").innerHTML = D.teams.map(t => {
+    const gs = seasonGames(t), r = record(gs);
+    const recent = gs.filter(g => g.result !== "예정").slice(0, 5).reverse();
+    const last = gs.find(g => g.result !== "예정");
+    const next = [...gs].reverse().find(g => g.result === "예정");
+    return `<div class="card ${t.id === state.team ? "active" : ""}" style="--tc:${COLORS[t.id]||"#1f6b45"}" data-id="${t.id}">
+      <div class="lg">${esc(t.league)} · ${esc(t.division)}</div>
+      <h2>${esc(t.name)}</h2>
+      <div class="rec"><b>${r.w}승 ${r.l}패${r.d ? " " + r.d + "무" : ""}</b>
+        <span>승률 ${r.pct.toFixed(3).replace(/^0/,"")} · 득 ${r.rf} / 실 ${r.ra}</span></div>
+      <div class="form">${recent.map(g => `<span class="dot ${g.result}" title="${esc(g.date)} vs ${esc(g.opp)} ${g.rf}:${g.ra}">${g.result}</span>`).join("") || '<span class="muted">경기 없음</span>'}</div>
+      <div class="last">${last ? `최근 ${esc(last.date)} vs ${esc(last.opp)} <b>${last.rf}:${last.ra}</b> ${last.result}` : ""}
+        ${next ? `<br>다음 ${esc(next.date)} ${esc(next.time)} vs ${esc(next.opp)}` : ""}</div>
+    </div>`;
+  }).join("");
+  document.querySelectorAll(".card").forEach(c => c.onclick = () => { state.team = c.dataset.id; state.comp = null; render(); });
+}
+
+function renderDetail() {
+  const t = D.teams.find(x => x.id === state.team);
+  const tc = COLORS[t.id] || "#1f6b45";
+  const tabs = [["games","경기기록"],["bat","타자기록"],["pit","투수기록"]];
+  $("#detail").style.setProperty("--tc", tc);
+  $("#detail").innerHTML = `
+    <div class="teamhead"><h2>${esc(t.name)} <span class="badge">${state.season} 시즌</span></h2>
+      <div class="links">${(t.teamLinks && t.teamLinks.length ? t.teamLinks : [{label: "원본 팀 페이지", url: t.teamUrl}])
+        .map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(t.teamLinks && t.teamLinks.length > 1 ? l.label : "원본 팀 페이지")} ↗</a>`).join("")}</div></div>
+    <div class="tabs">${tabs.map(([k,l]) => `<button class="tab ${state.tab===k?"active":""}" data-k="${k}">${l}</button>`).join("")}</div>
+    <div class="body" id="tabbody"></div>`;
+  document.querySelectorAll(".tab").forEach(b => b.onclick = () => { state.tab = b.dataset.k; renderDetail(); });
+  if (state.tab === "games") renderGames(t); else renderPlayers(t, state.tab);
+}
+
+function renderGames(t) {
+  const gs = seasonGames(t), r = record(gs);
+  const comps = [...new Set(gs.map(g => g.comp))];
+  const sel = state.comp && comps.includes(state.comp) ? state.comp : "";
+  const list = sel ? gs.filter(g => g.comp === sel) : gs;
+  const rr = record(list);
+  const alb = t.site === "alb";
+  $("#tabbody").innerHTML = `
+    <div class="sumrow">
+      <div class="stat"><div class="k">경기</div><div class="v">${rr.n}</div></div>
+      <div class="stat"><div class="k">승-패-무</div><div class="v">${rr.w}-${rr.l}-${rr.d}</div></div>
+      <div class="stat"><div class="k">승률</div><div class="v">${rr.pct.toFixed(3).replace(/^0/,"")}</div></div>
+      <div class="stat"><div class="k">득점</div><div class="v">${rr.rf}</div></div>
+      <div class="stat"><div class="k">실점</div><div class="v">${rr.ra}</div></div>
+      <div class="stat"><div class="k">득실차</div><div class="v">${rr.rf-rr.ra > 0 ? "+" : ""}${rr.rf-rr.ra}</div></div>
+    </div>
+    <div class="toolbar">
+      <select id="comp"><option value="">전체 대회</option>${comps.map(c => `<option ${c===sel?"selected":""}>${esc(c)}</option>`).join("")}</select>
+      <span class="grow"></span><span class="muted">${list.length}경기</span>
+    </div>
+    ${list.length ? `<div class="tblwrap"><table><thead><tr>
+      <th class="l">날짜</th><th class="l">대회</th><th class="l">상대팀</th><th>스코어</th><th>결과</th>
+      ${alb ? "<th>안타</th><th>홈런</th><th>팀타율</th><th>실책</th><th>이닝</th><th>자책</th>" : '<th class="l">구장</th><th class="l">기록</th>'}
+    </tr></thead><tbody>${list.map(g => `<tr>
+      <td class="l">${esc(g.date)} ${esc(g.time)}</td><td class="l">${esc(g.comp)}</td>
+      <td class="l">${esc(g.opp)}</td>
+      <td class="score">${g.rf ?? "-"} : ${g.ra ?? "-"}</td>
+      <td><span class="res ${g.result}">${g.result}</span>${g.note && g.note !== "경기종료" ? `<span class="badge">${esc(g.note)}</span>` : ""}</td>
+      ${alb ? `<td>${fmt("H", g.bat?.H)}</td><td>${fmt("HR", g.bat?.HR)}</td><td>${fmt("AVG", g.bat?.AVG)}</td><td>${fmt("E", g.bat?.E)}</td><td>${esc(g.pit?.IP||"-")}</td><td>${fmt("ER", g.pit?.ER)}</td>`
+            : `<td class="l">${esc(g.place)}</td><td class="l">${g.link ? `<a href="${esc(g.link)}" target="_blank" rel="noopener">박스스코어</a>` : ""}${g.highlight ? ` · <a href="${esc(g.highlight)}" target="_blank" rel="noopener">영상</a>` : ""}</td>`}
+    </tr>`).join("")}</tbody></table></div>` : '<div class="empty">이 시즌 경기 기록이 없습니다.</div>'}`;
+  $("#comp").onchange = e => { state.comp = e.target.value; renderGames(t); };
+}
+
+function renderPlayers(t, kind) {
+  const entries = t.stats.filter(s => s.season === state.season && (kind === "bat" ? s.batters.length : s.pitchers.length));
+  const comps = entries.map(e => e.comp);
+  if (!entries.length) { $("#tabbody").innerHTML = '<div class="empty">이 시즌 선수 기록이 없습니다.</div>'; return; }
+  const multi = comps.length > 1;
+  const sel = state.comp && (comps.includes(state.comp) || state.comp === "__all") ? state.comp : (multi ? "__all" : comps[0]);
+  let rows, src = "";
+  if (sel === "__all") rows = mergePlayers(entries.map(e => kind === "bat" ? e.batters : e.pitchers), kind);
+  else { const e = entries.find(x => x.comp === sel); rows = (kind === "bat" ? e.batters : e.pitchers).map(p => ({...p})); src = e["src_" + kind]; }
+  const cols = kind === "bat" ? BAT_COLS : PIT_COLS;
+  const sk = state.sort[kind] || { k: kind === "bat" ? "AVG" : "IP", asc: false };
+  const val = (p, k) => k === "IP" ? ipOuts(p.IP) : (p[k] ?? (ASC_DEFAULT.has(k) ? Infinity : -Infinity));
+  rows.sort((a, b) => {
+    let x = val(a, sk.k), y = val(b, sk.k);
+    if (sk.k === "no") { x = parseInt(x) ; y = parseInt(y); x = isNaN(x) ? 999 : x; y = isNaN(y) ? 999 : y; }
+    const c = typeof x === "string" ? x.localeCompare(y, "ko") : x - y;
+    return sk.asc ? c : -c;
+  });
+  const me = rows.find(p => isMe(p.name));
+  $("#tabbody").innerHTML = `
+    ${me ? meCard(me, kind) : ""}
+    <div class="toolbar">
+      ${multi ? `<select id="pcomp"><option value="__all" ${sel==="__all"?"selected":""}>전체 대회 합산</option>${comps.map(c => `<option ${c===sel?"selected":""}>${esc(c)}</option>`).join("")}</select>` : `<span class="muted">${esc(sel)}</span>`}
+      <span class="grow"></span>
+      <span class="muted">${rows.length}명 · 열 제목을 누르면 정렬</span>
+      ${src ? `<a class="muted" href="${esc(src)}" target="_blank" rel="noopener">원본 ↗</a>` : ""}
+    </div>
+    <div class="tblwrap"><table><thead><tr>${cols.map(([k,l,c]) => `<th class="${c||""} ${sk.k===k?"sorted"+(sk.asc?" asc":""):""}" data-k="${k}">${l}</th>`).join("")}</tr></thead>
+    <tbody>${rows.map(p => `<tr class="${isMe(p.name)?"me":""}">${cols.map(([k,,c]) => `<td class="${c||""}">${k==="IP"?esc(p.IP||"-"):esc(fmt(k, p[k]))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    ${sel === "__all" ? '<p class="muted">합산 기록은 대회별 기록을 더해 계산한 값입니다 (비율 기록은 다시 계산).</p>' : ""}`;
+  document.querySelectorAll("#tabbody th").forEach(th => th.onclick = () => {
+    const k = th.dataset.k, cur = state.sort[kind];
+    state.sort[kind] = cur && cur.k === k ? { k, asc: !cur.asc } : { k, asc: ASC_DEFAULT.has(k) };
+    renderPlayers(t, kind);
+  });
+  const pc = $("#pcomp"); if (pc) pc.onchange = e => { state.comp = e.target.value; renderPlayers(t, kind); };
+}
+
+function meCard(p, kind) {
+  const items = kind === "bat"
+    ? [["타율", fmt("AVG", p.AVG)], ["OPS", fmt("OPS", p.OPS)], ["경기", p.G], ["안타", p.H], ["홈런", p.HR], ["타점", p.RBI], ["도루", p.SB]]
+    : [["평균자책", fmt("ERA", p.ERA)], ["경기", p.G], ["승-패", `${p.W ?? 0}-${p.L ?? 0}`], ["이닝", p.IP], ["탈삼진", p.SO], ["볼넷", p.BB]];
+  return `<p class="muted" style="margin:0 0 8px">내 기록 · ${esc(p.name)}</p><div class="sumrow">${items.map(([k,v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v ?? "-")}</div></div>`).join("")}</div>`;
+}
+
+function mergePlayers(lists, kind) {
+  const sumKeys = kind === "bat"
+    ? ["G","PA","AB","H","2B","3B","HR","RBI","R","SB","CS","BB","HBP","SO","SF","SAC"]
+    : ["G","W","L","SV","HLD","H","HR","BB","HBP","SO","R","ER","TBF"];
+  const m = new Map();
+  for (const list of lists) for (const p of list) {
+    const q = m.get(p.name) || { name: p.name, no: p.no, _outs: 0 };
+    for (const k of sumKeys) if (typeof p[k] === "number") q[k] = (q[k] || 0) + p[k];
+    if (kind === "pit") q._outs += ipOuts(p.IP);
+    m.set(p.name, q);
+  }
+  return [...m.values()].map(q => {
+    if (kind === "bat") {
+      const ab = q.AB||0, h = q.H||0, bb = q.BB||0, hbp = q.HBP||0, sf = q.SF||0;
+      q.AVG = ab ? h/ab : 0; const den = ab+bb+hbp+sf; q.OBP = den ? (h+bb+hbp)/den : 0;
+      q.SLG = ab ? (h + (q["2B"]||0) + 2*(q["3B"]||0) + 3*(q.HR||0))/ab : 0; q.OPS = q.OBP + q.SLG;
+    } else {
+      const o = q._outs; q.IP = Math.floor(o/3) + (o%3 ? ` ${o%3}/3` : "");
+      q.ERA = o ? q.ER * 21 / o : null;  // 사회인야구 7이닝 기준 (두 사이트 모두 동일)
+    }
+    return q;
+  });
+}
+
+// data.js 가 있으면 그대로, 없으면(온라인 게시본) data.json 을 불러온다.
+if (D) init();
+else fetch("data.json").then(r => r.json()).then(j => { D = j; init(); }).catch(() => init());
+</script>
+
+</body>
+</html>
