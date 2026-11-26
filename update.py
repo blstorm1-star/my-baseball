@@ -545,6 +545,10 @@ def build_site(out, js):
             f'<meta property="og:description" content="{esc(desc)}">\n'
             f'<meta name="description" content="{esc(desc)}">\n')
     # index.html 의 <style> 이 끝나는 곳까지를 head 로, 나머지를 body 로 감싼다.
+    # 데이터가 바뀔 때마다 주소를 바꿔, 브라우저에 남은 옛 기록 대신 새 기록을 읽게 한다.
+    ver = re.sub(r"\D", "", out["updated"])
+    page = page.replace('<script src="data.js"></script>', f'<script src="data.js?v={ver}"></script>')
+    page = page.replace('fetch("data.json")', f'fetch("data.json?v={ver}")')
     cut = page.index("</style>") + len("</style>")
     html = head + page[:cut] + "\n</head>\n<body>\n" + page[cut:] + "\n</body>\n</html>\n"
     (docs / "index.html").write_text(html, encoding="utf-8")

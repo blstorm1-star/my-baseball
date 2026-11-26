@@ -124,7 +124,7 @@
   </footer>
 </div>
 
-<script src="data.js"></script>
+<script src="data.js?v=202611270844"></script>
 <script>
 let D = window.BASEBALL_DATA;
 const store = {
@@ -349,7 +349,7 @@ function mergePlayers(lists, kind) {
 
 // data.js 가 있으면 그대로, 없으면(온라인 게시본) data.json 을 불러온다.
 if (D) init();
-else fetch("data.json").then(r => r.json()).then(j => { D = j; init(); }).catch(() => init());
+else fetch("data.json?v=202611270844").then(r => r.json()).then(j => { D = j; init(); }).catch(() => init());
 </script>
 
 </body>
