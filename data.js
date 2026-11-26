@@ -1,7 +1,7 @@
 window.BASEBALL_DATA = {
  "owner": "나의 사회인야구",
  "myName": "",
- "updated": "2026-11-27 08:44",
+ "updated": "2026-11-27 08:52",
  "seasons": [
   2026,
   2025
@@ -2336,6 +2336,473 @@ window.BASEBALL_DATA = {
      "season": 2026,
      "comp": "연합회장기",
      "group": "만안 -> 평촌 리그",
+     "groups": [
+      {
+       "name": "만안 -> 비산 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "리마스터",
+         "G": 6,
+         "W": 5,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.833,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "안양레전드",
+         "G": 6,
+         "W": 4,
+         "L": 2,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "윈브라더스",
+         "G": 8,
+         "W": 3,
+         "L": 5,
+         "D": 0,
+         "PCT": 0.375,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "DM레기즈",
+         "G": 7,
+         "W": 2,
+         "L": 5,
+         "D": 0,
+         "PCT": 0.286,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "과천아리즈",
+         "G": 7,
+         "W": 5,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.833,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양드림스",
+         "G": 5,
+         "W": 3,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.75,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "경기몬스터",
+         "G": 8,
+         "W": 3,
+         "L": 5,
+         "D": 0,
+         "PCT": 0.375,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "ADIOS",
+         "G": 7,
+         "W": 1,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.143,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "만안 -> 호계 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양패밀리",
+         "G": 6,
+         "W": 4,
+         "L": 1,
+         "D": 1,
+         "PCT": 0.8,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "안양버팔로스",
+         "G": 9,
+         "W": 4,
+         "L": 4,
+         "D": 1,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "청운피닉스",
+         "G": 6,
+         "W": 3,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "마구잡이",
+         "G": 7,
+         "W": 3,
+         "L": 4,
+         "D": 0,
+         "PCT": 0.429,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "야미코사",
+         "G": 6,
+         "W": 6,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "경리나라",
+         "G": 7,
+         "W": 4,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.571,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "노루",
+         "G": 5,
+         "W": 2,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.4,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "엠엘비바다",
+         "G": 8,
+         "W": 0,
+         "L": 8,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "만안 -> 평촌 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "허리케인",
+         "G": 7,
+         "W": 4,
+         "L": 2,
+         "D": 1,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "빈티지야구단",
+         "G": 6,
+         "W": 3,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "안양재규어",
+         "G": 5,
+         "W": 2,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.4,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "안양위너스",
+         "G": 0,
+         "W": 0,
+         "L": 0,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "G-STARS",
+         "G": 8,
+         "W": 6,
+         "L": 1,
+         "D": 1,
+         "PCT": 0.857,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "뉴런스",
+         "G": 7,
+         "W": 3,
+         "L": 4,
+         "D": 0,
+         "PCT": 0.429,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "대다나다",
+         "G": 6,
+         "W": 3,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": true
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "Ginkgo",
+         "G": 9,
+         "W": 2,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.222,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 관양 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "SBC안양 - F",
+         "G": 9,
+         "W": 8,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.889,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "LG전자 - F",
+         "G": 7,
+         "W": 6,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.857,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "호랑이굴",
+         "G": 8,
+         "W": 2,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.25,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "안양드래곤즈",
+         "G": 9,
+         "W": 2,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.222,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "한솔 - F",
+         "G": 9,
+         "W": 8,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.889,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양호투맹타",
+         "G": 10,
+         "W": 4,
+         "L": 5,
+         "D": 1,
+         "PCT": 0.444,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "삼보위더스",
+         "G": 8,
+         "W": 3,
+         "L": 4,
+         "D": 1,
+         "PCT": 0.429,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "그랜드슬램",
+         "G": 10,
+         "W": 1,
+         "L": 9,
+         "D": 0,
+         "PCT": 0.1,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 부흥 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양CROWNS - F",
+         "G": 8,
+         "W": 6,
+         "L": 1,
+         "D": 1,
+         "PCT": 0.857,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "주정뱅이",
+         "G": 8,
+         "W": 4,
+         "L": 4,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "안양동안경찰서",
+         "G": 7,
+         "W": 1,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.143,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "마이볼",
+         "G": 10,
+         "W": 1,
+         "L": 9,
+         "D": 0,
+         "PCT": 0.1,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "JCKSNIPERS - F",
+         "G": 8,
+         "W": 8,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "태즈매니언스 - F",
+         "G": 9,
+         "W": 7,
+         "L": 2,
+         "D": 0,
+         "PCT": 0.778,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "제브라에이시스",
+         "G": 9,
+         "W": 4,
+         "L": 4,
+         "D": 1,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "캐치볼스",
+         "G": 9,
+         "W": 2,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.222,
+         "mine": false
+        }
+       ]
+      }
+     ],
      "rows": [
       {
        "section": "E. 동부 지구",
@@ -2440,6 +2907,473 @@ window.BASEBALL_DATA = {
      "season": 2026,
      "comp": "시장기",
      "group": "만안 -> 평촌 리그",
+     "groups": [
+      {
+       "name": "만안 -> 비산 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "리마스터",
+         "G": 2,
+         "W": 2,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "DM레기즈",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "안양레전드",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "윈브라더스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "과천아리즈",
+         "G": 3,
+         "W": 3,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "ADIOS",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "경기몬스터",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양드림스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "만안 -> 호계 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양패밀리",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "청운피닉스",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "마구잡이",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "안양버팔로스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "경리나라",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "야미코사",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "노루",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "엠엘비바다",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "만안 -> 평촌 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "빈티지야구단",
+         "G": 3,
+         "W": 3,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양재규어",
+         "G": 3,
+         "W": 3,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "안양위너스",
+         "G": 0,
+         "W": 0,
+         "L": 0,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "허리케인",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "뉴런스",
+         "G": 0,
+         "W": 0,
+         "L": 0,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "G-STARS",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "Ginkgo",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "대다나다",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": true
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 관양 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "SBC안양 - F",
+         "G": 3,
+         "W": 3,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "LG전자 - F",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "호랑이굴",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "안양드래곤즈",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "한솔 - F",
+         "G": 3,
+         "W": 3,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "그랜드슬램",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "삼보위더스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양호투맹타",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 부흥 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양CROWNS - F",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "주정뱅이",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "마이볼",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "안양동안경찰서",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "제브라에이시스",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "태즈매니언스 - F",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "JCKSNIPERS - F",
+         "G": 0,
+         "W": 0,
+         "L": 0,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "캐치볼스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      }
+     ],
      "rows": [
       {
        "section": "E. 동부 지구",
@@ -2544,6 +3478,451 @@ window.BASEBALL_DATA = {
      "season": 2025,
      "comp": "연합회장기",
      "group": "동안 -> 관양 리그",
+     "groups": [
+      {
+       "name": "만안 -> 석수 리그",
+       "rows": [
+        {
+         "section": "※ 풀리그",
+         "rank": 1,
+         "team": "리마스터",
+         "G": 10,
+         "W": 8,
+         "L": 0,
+         "D": 2,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 2,
+         "team": "안양재규어",
+         "G": 10,
+         "W": 7,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.7,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 3,
+         "team": "안양패밀리",
+         "G": 10,
+         "W": 5,
+         "L": 5,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 4,
+         "team": "안양레전드",
+         "G": 9,
+         "W": 2,
+         "L": 4,
+         "D": 3,
+         "PCT": 0.333,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 5,
+         "team": "노루",
+         "G": 10,
+         "W": 2,
+         "L": 6,
+         "D": 1,
+         "PCT": 0.25,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 6,
+         "team": "안양위너스",
+         "G": 9,
+         "W": 1,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.125,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 비산 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "한솔 - F",
+         "G": 10,
+         "W": 10,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "경기몬스터 - F",
+         "G": 10,
+         "W": 6,
+         "L": 3,
+         "D": 1,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "LG전자",
+         "G": 10,
+         "W": 6,
+         "L": 4,
+         "D": 0,
+         "PCT": 0.6,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "뉴런스",
+         "G": 10,
+         "W": 2,
+         "L": 8,
+         "D": 0,
+         "PCT": 0.2,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "과천아리즈 - F",
+         "G": 10,
+         "W": 6,
+         "L": 3,
+         "D": 1,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "제브라에이시스",
+         "G": 10,
+         "W": 4,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.4,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "ADIOS",
+         "G": 10,
+         "W": 2,
+         "L": 7,
+         "D": 1,
+         "PCT": 0.222,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "DM레기즈",
+         "G": 10,
+         "W": 2,
+         "L": 7,
+         "D": 1,
+         "PCT": 0.222,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 호계 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양버팔로스 - F",
+         "G": 10,
+         "W": 8,
+         "L": 2,
+         "D": 0,
+         "PCT": 0.8,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "미르",
+         "G": 10,
+         "W": 4,
+         "L": 5,
+         "D": 1,
+         "PCT": 0.444,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "엠엘비바다",
+         "G": 10,
+         "W": 4,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.4,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "캐치볼스",
+         "G": 10,
+         "W": 2,
+         "L": 8,
+         "D": 0,
+         "PCT": 0.2,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "빈티지야구단 - F",
+         "G": 10,
+         "W": 7,
+         "L": 2,
+         "D": 1,
+         "PCT": 0.778,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "태즈매니언스 - F",
+         "G": 10,
+         "W": 6,
+         "L": 3,
+         "D": 1,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "Ginkgo",
+         "G": 10,
+         "W": 4,
+         "L": 5,
+         "D": 1,
+         "PCT": 0.444,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "허리케인",
+         "G": 10,
+         "W": 3,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.3,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 평촌 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양호투맹타 - F",
+         "G": 10,
+         "W": 8,
+         "L": 1,
+         "D": 1,
+         "PCT": 0.889,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "청운피닉스 - F",
+         "G": 10,
+         "W": 5,
+         "L": 3,
+         "D": 2,
+         "PCT": 0.625,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "마이볼",
+         "G": 10,
+         "W": 3,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.3,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "삼보위더스",
+         "G": 10,
+         "W": 2,
+         "L": 7,
+         "D": 1,
+         "PCT": 0.222,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "경리나라 - F",
+         "G": 10,
+         "W": 9,
+         "L": 0,
+         "D": 1,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "마구잡이",
+         "G": 10,
+         "W": 4,
+         "L": 4,
+         "D": 2,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "호랑이굴",
+         "G": 10,
+         "W": 4,
+         "L": 5,
+         "D": 1,
+         "PCT": 0.444,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "안양드래곤즈",
+         "G": 10,
+         "W": 1,
+         "L": 9,
+         "D": 0,
+         "PCT": 0.1,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 관양 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "G-STARS - F",
+         "G": 10,
+         "W": 8,
+         "L": 2,
+         "D": 0,
+         "PCT": 0.8,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "대다나다",
+         "G": 10,
+         "W": 7,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.7,
+         "mine": true
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "윈브라더스",
+         "G": 10,
+         "W": 3,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.3,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 4,
+         "team": "SBC안양",
+         "G": 10,
+         "W": 3,
+         "L": 7,
+         "D": 0,
+         "PCT": 0.3,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "안양드림스 - F",
+         "G": 10,
+         "W": 8,
+         "L": 2,
+         "D": 0,
+         "PCT": 0.8,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "야미코사",
+         "G": 10,
+         "W": 7,
+         "L": 3,
+         "D": 0,
+         "PCT": 0.7,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 3,
+         "team": "주정뱅이",
+         "G": 10,
+         "W": 4,
+         "L": 6,
+         "D": 0,
+         "PCT": 0.4,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "그랜드슬램",
+         "G": 10,
+         "W": 0,
+         "L": 10,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      }
+     ],
      "rows": [
       {
        "section": "E. 동부 지구",
@@ -2648,6 +4027,451 @@ window.BASEBALL_DATA = {
      "season": 2025,
      "comp": "시장기",
      "group": "동안 -> 관양 리그",
+     "groups": [
+      {
+       "name": "만안 -> 석수 리그",
+       "rows": [
+        {
+         "section": "※ 풀리그",
+         "rank": 1,
+         "team": "리마스터",
+         "G": 5,
+         "W": 5,
+         "L": 0,
+         "D": 0,
+         "PCT": 1.0,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 2,
+         "team": "안양패밀리",
+         "G": 6,
+         "W": 5,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.833,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 3,
+         "team": "노루",
+         "G": 4,
+         "W": 3,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.75,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 4,
+         "team": "안양재규어",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 5,
+         "team": "안양레전드",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "※ 풀리그",
+         "rank": 6,
+         "team": "안양위너스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 비산 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "LG전자",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "경기몬스터 - F",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "뉴런스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "한솔 - F",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "과천아리즈 - F",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "ADIOS",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "DM레기즈",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "제브라에이시스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 호계 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양버팔로스 - F",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "캐치볼스",
+         "G": 0,
+         "W": 0,
+         "L": 0,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "미르",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "엠엘비바다",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "Ginkgo",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "빈티지야구단 - F",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "태즈매니언스 - F",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 4,
+         "team": "허리케인",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 평촌 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "안양호투맹타 - F",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "삼보위더스",
+         "G": 2,
+         "W": 1,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.5,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "마이볼",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 3,
+         "team": "청운피닉스 - F",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "경리나라 - F",
+         "G": 5,
+         "W": 4,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.8,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "마구잡이",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양드래곤즈",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "호랑이굴",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      },
+      {
+       "name": "동안 -> 관양 리그",
+       "rows": [
+        {
+         "section": "E. 동부 지구",
+         "rank": 1,
+         "team": "대다나다",
+         "G": 4,
+         "W": 3,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.75,
+         "mine": true
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "G-STARS - F",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "SBC안양",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "E. 동부 지구",
+         "rank": 2,
+         "team": "윈브라더스",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 1,
+         "team": "야미코사",
+         "G": 3,
+         "W": 2,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.667,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "그랜드슬램",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "안양드림스 - F",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        },
+        {
+         "section": "W. 서부 지구",
+         "rank": 2,
+         "team": "주정뱅이",
+         "G": 1,
+         "W": 0,
+         "L": 1,
+         "D": 0,
+         "PCT": 0.0,
+         "mine": false
+        }
+       ]
+      }
+     ],
      "rows": [
       {
        "section": "E. 동부 지구",

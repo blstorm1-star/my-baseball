@@ -286,33 +286,35 @@ def alb_team(team, seasons):
 
 
 def alb_standings(team, season, comp):
-    """안양리그 팀순위: 우리 팀이 속한 리그(지구별) 순위표."""
+    """안양리그 팀순위: 대회의 모든 리그(비산·호계·평촌…) 순위표. 우리 팀 리그가 기본."""
     url = (f"{ALB}/s/stand_team/stand_team_main_new.php?sc={team['sc']}"
            f"&league={alb_q(comp)}&gyear={season}")
+    groups, mine, my_group = [], None, ""
     for t in tables_of(fetch(url, "cp949")):
         rows = [r for r in t if any(c for c in r)]
-        if not any(team["name"] in r for r in rows):
-            continue
-        group, section, out, mine = "", "", [], None
+        heads = [r for r in rows if len(r) >= 6 and r[0] == "R."]
+        if len(heads) != 1:
+            continue  # 리그 하나짜리 표만 (바깥 틀 표 제외)
+        name, section, out = heads[0][1], "", []
         for r in rows:
-            if len(r) >= 6 and r[0] == "R.":
-                group = r[1]
-            elif len(r) == 1:
+            if len(r) == 1:
                 section = r[0]
-            elif len(r) >= 6 and r[1]:
+            elif len(r) >= 6 and r[0] != "R." and r[1]:
                 w, d, l = num(r[3]) or 0, num(r[4]) or 0, num(r[5]) or 0
                 row = {"section": section, "rank": num(r[0]), "team": r[1], "G": num(r[2]),
                        "W": w, "L": l, "D": d, "PCT": round(w / (w + l), 3) if w + l else 0.0,
                        "mine": r[1] == team["name"]}
                 if row["mine"]:
-                    mine = row
+                    mine, my_group = row, name
                 out.append(row)
-        if not mine or not (mine["G"] or 0):
-            return None  # 그 시즌 그 대회에 참가하지 않음
-        rank = f"{mine['rank']}위" + (f" ({mine['section']})" if mine["section"] else "")
-        return {"season": season, "comp": comp, "group": group, "rows": out,
-                "myRank": rank, "src": url, "cols": ["G", "W", "D", "L", "PCT"]}
-    return None
+        if out and name not in [g["name"] for g in groups]:
+            groups.append({"name": name, "rows": out})
+    if not mine or not (mine["G"] or 0):
+        return None  # 그 시즌 그 대회에 참가하지 않음
+    rank = f"{mine['rank']}위" + (f" ({mine['section']})" if mine["section"] else "")
+    rows = next(g["rows"] for g in groups if g["name"] == my_group)
+    return {"season": season, "comp": comp, "group": my_group, "groups": groups, "rows": rows,
+            "myRank": rank, "src": url, "cols": ["G", "W", "D", "L", "PCT"]}
 
 
 # ================================================================ 시흥시 (SH)
