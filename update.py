@@ -268,7 +268,51 @@ def alb_team(team, seasons):
                         p["no"] = info["no"]
                 res["stats"].append(entry)
                 log(f"  {season} {comp}: 타자 {len(entry['batters'])} / 투수 {len(entry['pitchers'])}")
+
+    res["standings"] = []
+    for season in seasons:
+        for comp in team.get("competitions", ["연합회장기"]):
+            if comp == "플레이오프":
+                continue  # 토너먼트라 순위표가 없음
+            try:
+                st = alb_standings(team, season, comp)
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"{team['name']} {season} {comp} 순위: {e}")
+                continue
+            if st:
+                res["standings"].append(st)
+                log(f"  {season} {comp} 순위: {st['myRank']} / {len(st['rows'])}팀")
     return res
+
+
+def alb_standings(team, season, comp):
+    """안양리그 팀순위: 우리 팀이 속한 리그(지구별) 순위표."""
+    url = (f"{ALB}/s/stand_team/stand_team_main_new.php?sc={team['sc']}"
+           f"&league={alb_q(comp)}&gyear={season}")
+    for t in tables_of(fetch(url, "cp949")):
+        rows = [r for r in t if any(c for c in r)]
+        if not any(team["name"] in r for r in rows):
+            continue
+        group, section, out, mine = "", "", [], None
+        for r in rows:
+            if len(r) >= 6 and r[0] == "R.":
+                group = r[1]
+            elif len(r) == 1:
+                section = r[0]
+            elif len(r) >= 6 and r[1]:
+                w, d, l = num(r[3]) or 0, num(r[4]) or 0, num(r[5]) or 0
+                row = {"section": section, "rank": num(r[0]), "team": r[1], "G": num(r[2]),
+                       "W": w, "L": l, "D": d, "PCT": round(w / (w + l), 3) if w + l else 0.0,
+                       "mine": r[1] == team["name"]}
+                if row["mine"]:
+                    mine = row
+                out.append(row)
+        if not mine or not (mine["G"] or 0):
+            return None  # 그 시즌 그 대회에 참가하지 않음
+        rank = f"{mine['rank']}위" + (f" ({mine['section']})" if mine["section"] else "")
+        return {"season": season, "comp": comp, "group": group, "rows": out,
+                "myRank": rank, "src": url, "cols": ["G", "W", "D", "L", "PCT"]}
+    return None
 
 
 # ================================================================ 시흥시 (SH)
@@ -411,8 +455,77 @@ def sh_team(team, seasons):
             if entry["batters"] or entry["pitchers"]:
                 res["stats"].append(entry)
                 log(f"  {year} {comp}: 타자 {len(entry['batters'])} / 투수 {len(entry['pitchers'])}")
+        # 팀 순위
+        for year in sorted({int(y) for _, y, _ in leagues if int(y) in seasons}):
+            try:
+                lmap = sh_league_map(base, seq, year)
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"{team['name']} {year} 리그목록: {e}")
+                continue
+            for lseq, y, label in leagues:
+                if int(y) != year or lseq not in lmap:
+                    continue
+                comp = re.sub(r"\s*\(\d{4}\)\s*$", "", unescape(label)).strip()
+                try:
+                    st = sh_standings(base, seq, year, lmap[lseq], lseq, comp)
+                except Exception as e:  # noqa: BLE001
+                    errors.append(f"{team['name']} {year} {comp} 순위: {e}")
+                    continue
+                if st:
+                    res.setdefault("standings", []).append(st)
+                    log(f"  {year} {comp} 순위: {st['myRank']} / {len(st['rows'])}팀")
     res["teamUrl"] = res["teamLinks"][0]["url"]
     return res
+
+
+def _select_opts(html, name):
+    m = re.search(r'<select[^>]*name="' + name + r'"[^>]*>(.*?)</select>', html, re.S)
+    return re.findall(r'<option value="(\d+)"[^>]*>([^<]*)', m.group(1)) if m else []
+
+
+def sh_league_map(base, seq, year):
+    """하위 리그 번호 -> 상위 리그 번호 (순위 페이지는 둘 다 필요)."""
+    page = f"{base}/teamPage/scheduleRecord/getBatterRecord.hs?teamSeq={seq}&searchYear={year}"
+    out = {}
+    for top, _ in _select_opts(fetch(page), "searchTopLeagueSeq"):
+        for low, _ in _select_opts(fetch(f"{page}&searchTopLeagueSeq={top}"), "searchLowerLeagueSeq"):
+            out[low] = top
+    return out
+
+
+SH_RANK = {"승점": "PTS", "경기": "G", "승": "W", "패": "L", "무": "D", "득점": "RS", "실점": "RA",
+           "최근 10경기": "L10", "연속": "STRK"}
+
+
+def sh_standings(base, seq, year, top, low, comp):
+    url = (f"{base}/record/getTeamRankList.hs?leagueCategory=NORMAL&searchYear={year}"
+           f"&searchTopLeagueSeq={top}&searchLowerLeagueSeq={low}")
+    html = fetch(url)
+    head, rows = find_table(tables_of(html), "순위", "팀명", "경기")
+    if not head:
+        return None
+    # 표 행 순서대로 팀 번호 (data-team-seq) 를 읽어 우리 팀을 찾는다.
+    body = html[html.find("팀명"):]
+    seqs = re.findall(r'class="lnk-go-detail" data-team-seq="(\d+)"', body)
+    keys = [SH_RANK.get(re.sub(r"\s*[▼▲]\s*", "", h).strip()) for h in head]
+    out, mine = [], None
+    for i, r in enumerate(rows):
+        if len(r) < len(head) or not r[1]:
+            continue
+        row = {"section": "", "rank": num(r[0]) or len(out) + 1, "team": r[1],
+               "mine": i < len(seqs) and seqs[i] == str(seq)}
+        for k, v in zip(keys, r):
+            if k:
+                row[k] = v if k in ("L10", "STRK") else num(v)
+        w, l = row.get("W") or 0, row.get("L") or 0
+        row["PCT"] = round(w / (w + l), 3) if w + l else 0.0
+        if row["mine"]:
+            mine = row
+        out.append(row)
+    if not mine:
+        return None
+    return {"season": year, "comp": comp, "group": "", "rows": out, "myRank": f"{mine['rank']}위",
+            "src": url, "cols": ["PTS", "G", "W", "D", "L", "PCT", "RS", "RA", "L10", "STRK"]}
 
 
 # ================================================================ 공개용 사이트 (GitHub Pages)

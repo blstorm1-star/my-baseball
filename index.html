@@ -78,6 +78,11 @@
   .res { font-weight: 700; } .res.승 { color: var(--win); } .res.패 { color: var(--loss); } .res.무, .res.예정 { color: var(--draw); }
   .score { font-weight: 700; }
   .badge { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--muted); margin-left: 6px; }
+  .ranks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .rankpill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .rankblock { margin-bottom: 22px; } .rankblock:last-child { margin-bottom: 0; }
+  .rankblock h3 { margin: 0; font-size: 16px; }
+  tr.sec td { background: var(--bg); color: var(--muted); font-size: 12.5px; font-weight: 700; }
   .empty { padding: 30px; text-align: center; color: var(--muted); }
   footer { margin-top: 30px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
   .err { background: var(--err-bg); color: var(--err-fg); border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
@@ -178,6 +183,7 @@ function renderCards() {
       <h2>${esc(t.name)}</h2>
       <div class="rec"><b>${r.w}승 ${r.l}패${r.d ? " " + r.d + "무" : ""}</b>
         <span>승률 ${r.pct.toFixed(3).replace(/^0/,"")} · 득 ${r.rf} / 실 ${r.ra}</span></div>
+      <div class="ranks">${seasonStandings(t).map(s => `<span class="rankpill">${esc(shortComp(s.comp))} ${esc(String(s.myRank).replace(/\s*\(.*\)/, ""))}</span>`).join("")}</div>
       <div class="form">${recent.map(g => `<span class="dot ${g.result}" title="${esc(g.date)} vs ${esc(g.opp)} ${g.rf}:${g.ra}">${g.result}</span>`).join("") || '<span class="muted">경기 없음</span>'}</div>
       <div class="last">${last ? `최근 ${esc(last.date)} vs ${esc(last.opp)} <b>${last.rf}:${last.ra}</b> ${last.result}` : ""}
         ${next ? `<br>다음 ${esc(next.date)} ${esc(next.time)} vs ${esc(next.opp)}` : ""}</div>
@@ -189,7 +195,7 @@ function renderCards() {
 function renderDetail() {
   const t = D.teams.find(x => x.id === state.team);
   const tc = COLORS[t.id] || "#1f6b45";
-  const tabs = [["games","경기기록"],["bat","타자기록"],["pit","투수기록"]];
+  const tabs = [["games","경기기록"],["rank","팀 순위"],["bat","타자기록"],["pit","투수기록"]];
   $("#detail").style.setProperty("--tc", tc);
   $("#detail").innerHTML = `
     <div class="teamhead"><h2>${esc(t.name)} <span class="badge">${state.season} 시즌</span></h2>
@@ -198,7 +204,34 @@ function renderDetail() {
     <div class="tabs">${tabs.map(([k,l]) => `<button class="tab ${state.tab===k?"active":""}" data-k="${k}">${l}</button>`).join("")}</div>
     <div class="body" id="tabbody"></div>`;
   document.querySelectorAll(".tab").forEach(b => b.onclick = () => { state.tab = b.dataset.k; renderDetail(); });
-  if (state.tab === "games") renderGames(t); else renderPlayers(t, state.tab);
+  if (state.tab === "games") renderGames(t);
+  else if (state.tab === "rank") renderStandings(t);
+  else renderPlayers(t, state.tab);
+}
+
+const shortComp = c => /플레이오프/.test(c) ? "플레이오프" : String(c || "").split(" / ").pop();
+function seasonStandings(t) { return (t.standings || []).filter(s => s.season === state.season); }
+
+const RANK_COLS = { PTS: "승점", G: "경기", W: "승", D: "무", L: "패", PCT: "승률", RS: "득점", RA: "실점", L10: "최근 10경기", STRK: "연속" };
+function renderStandings(t) {
+  const list = seasonStandings(t);
+  if (!list.length) { $("#tabbody").innerHTML = '<div class="empty">이 시즌 팀 순위 정보가 없습니다.</div>'; return; }
+  $("#tabbody").innerHTML = list.map(s => {
+    let lastSec = null;
+    const n = s.cols.length + 2;
+    const body = s.rows.map(r => {
+      let sec = "";
+      if (r.section && r.section !== lastSec) { lastSec = r.section; sec = `<tr class="sec"><td class="l" colspan="${n}">${esc(r.section)}</td></tr>`; }
+      return sec + `<tr class="${r.mine ? "me" : ""}"><td>${esc(r.rank ?? "")}</td><td class="l">${esc(r.team)}</td>${
+        s.cols.map(k => `<td>${esc(k === "PCT" ? fmt("AVG", r[k]) : (r[k] ?? "-"))}</td>`).join("")}</tr>`;
+    }).join("");
+    return `<section class="rankblock">
+      <div class="toolbar"><h3>${esc(s.comp)}</h3><span class="rankpill">${esc(t.name)} ${esc(s.myRank)}</span>
+        <span class="grow"></span>${s.group ? `<span class="muted">${esc(s.group)}</span>` : ""}
+        <a class="muted" href="${esc(s.src)}" target="_blank" rel="noopener">원본 ↗</a></div>
+      <div class="tblwrap"><table><thead><tr><th>순위</th><th class="l">팀</th>${s.cols.map(k => `<th>${RANK_COLS[k] || k}</th>`).join("")}</tr></thead>
+      <tbody>${body}</tbody></table></div></section>`;
+  }).join("");
 }
 
 function renderGames(t) {
