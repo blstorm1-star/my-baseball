@@ -86,6 +86,16 @@
   .segbtn { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; }
   .segbtn.on { background: var(--tc, var(--accent)); border-color: var(--tc, var(--accent)); color: #fff; font-weight: 700; }
   .segbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .rankblock.park { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .rankblock.park .tblwrap { border: 0; border-radius: 0; }
+  .parkhead { position: relative; padding: 16px 16px 12px; min-height: 230px; display: flex; flex-direction: column; justify-content: flex-start;
+    background: linear-gradient(180deg, rgba(10,14,24,.45), rgba(10,14,24,0) 45%, rgba(10,14,24,0) 75%, rgba(10,14,24,.4)), var(--park) center 55% / cover no-repeat; color: #fff; }
+  .parkhead h3, .parkhead .muted, .parkhead a.muted { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .parkhead .rankpill { background: rgba(255,255,255,.9); color: #1f6b45; }
+  .parkhead .segbtn { background: rgba(255,255,255,.85); color: #24302a; border-color: transparent; }
+  .parkhead .segbtn.on { background: var(--tc, var(--accent)); color: #fff; }
+  .parkname { margin-top: auto; font-size: 12.5px; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+  @media (prefers-reduced-motion: no-preference) { .parkhead { transition: background .3s; } }
   tr.sec td { background: var(--bg); color: var(--muted); font-size: 12.5px; font-weight: 700; }
   .empty { padding: 30px; text-align: center; color: var(--muted); }
   footer { margin-top: 30px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
@@ -213,6 +223,48 @@ function renderDetail() {
   else renderPlayers(t, state.tab);
 }
 
+// ── 구장 배경 ──────────────────────────────────────────────
+// 리그 이름(버튼에 보이는 짧은 이름) → 구장. 지금은 모두 석수구장.
+// 구장 사진이 생기면 BALLPARKS 의 image 에 파일 경로(예: "parks/seoksu.jpg")를 넣으면 그림 대신 사진이 나온다.
+const BALLPARKS = {
+  seoksu: { name: "안양 석수구장", image: "", sky: ["#f3a35c", "#7a5a9a", "#2b3a67"], hill: "#3d4f6e", hill2: "#566a86" },
+  bakdal: { name: "안양 박달구장", image: "", sky: ["#bfe3f5", "#7fbde0", "#4a90c2"], hill: "#5f8f6a", hill2: "#7aa883" },
+};
+const LEAGUE_PARK = { "비산 리그": "seoksu", "호계 리그": "seoksu", "평촌 리그": "seoksu", "관양 리그": "seoksu", "부흥 리그": "seoksu", "석수 리그": "seoksu" };
+const TEAM_PARK = { daedanada: "seoksu" };   // 리그를 못 찾을 때 팀 기본 구장
+
+const parkCache = {};
+function parkSVG(key) {
+  if (parkCache[key]) return parkCache[key];
+  const p = BALLPARKS[key];
+  // 외야 관중석 쪽에서 내려다본 구장: 노을 하늘, 관악산 능선, 조명탑, 펜스, 잔디 줄무늬, 내야 흙
+  const stripes = Array.from({ length: 9 }, (_, i) =>
+    `<path d="M${-200 + i * 180} 400 L${520 + i * 20} 205 L${560 + i * 20} 205 L${-110 + i * 180} 400Z" fill="#ffffff" opacity="${i % 2 ? 0 : 0.06}"/>`).join("");
+  const tower = x => `<g fill="#1b2230"><rect x="${x}" y="70" width="5" height="120"/><rect x="${x - 22}" y="58" width="50" height="16" rx="2"/></g>
+    <g fill="#fff6d8">${[0, 1, 2, 3, 4].map(i => `<circle cx="${x - 16 + i * 10}" cy="66" r="3.2"/>`).join("")}</g>
+    <ellipse cx="${x + 3}" cy="66" rx="70" ry="22" fill="#fff6d8" opacity=".10"/>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+    <defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[2]}"/><stop offset=".55" stop-color="${p.sky[1]}"/><stop offset="1" stop-color="${p.sky[0]}"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7a3e"/><stop offset="1" stop-color="#1f5a2c"/></linearGradient></defs>
+    <rect width="1200" height="400" fill="url(#s)"/>
+    <path d="M0 150 L120 95 L210 125 L330 60 L430 110 L520 80 L640 130 L760 70 L880 115 L990 85 L1100 120 L1200 100 L1200 200 L0 200Z" fill="${p.hill2}"/>
+    <path d="M0 175 L150 130 L260 160 L380 120 L520 165 L660 125 L800 160 L940 130 L1080 165 L1200 140 L1200 210 L0 210Z" fill="${p.hill}"/>
+    ${tower(150)}${tower(1040)}
+    <rect x="0" y="196" width="1200" height="16" fill="#1e4d2b"/><rect x="0" y="196" width="1200" height="3" fill="#e8c547"/>
+    <rect x="0" y="212" width="1200" height="188" fill="url(#g)"/>${stripes}
+    <path d="M330 400 Q600 250 870 400Z" fill="#b5763f"/><path d="M430 400 L600 318 L770 400Z" fill="#2f7a3e"/>
+    <g fill="#fff"><rect x="596" y="314" width="9" height="9" transform="rotate(45 600 318)"/><rect x="470" y="380" width="8" height="8"/><rect x="722" y="380" width="8" height="8"/></g>
+    <ellipse cx="600" cy="362" rx="20" ry="7" fill="#c8874d"/>
+  </svg>`;
+  return (parkCache[key] = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+}
+function parkFor(t, groupName) {
+  const key = LEAGUE_PARK[String(groupName || "").replace(/^.*->\s*/, "")] || TEAM_PARK[t.id];
+  if (!key || !BALLPARKS[key]) return null;
+  const p = BALLPARKS[key];
+  return { name: p.name, bg: p.image ? `url("${p.image}")` : parkSVG(key) };
+}
+
 const shortComp = c => /플레이오프/.test(c) ? "플레이오프" : String(c || "").split(" / ").pop();
 function seasonStandings(t) { return (t.standings || []).filter(s => s.season === state.season); }
 
@@ -236,11 +288,15 @@ function renderStandings(t) {
       return sec + `<tr class="${r.mine ? "me" : ""}"><td>${esc(r.rank ?? "")}</td><td class="l">${esc(r.team)}</td>${
         s.cols.map(k => `<td>${esc(k === "PCT" ? fmt("AVG", r[k]) : (r[k] ?? "-"))}</td>`).join("")}</tr>`;
     }).join("");
-    return `<section class="rankblock">
+    const park = TEAM_PARK[t.id] ? parkFor(t, sel ? sel.name : s.group) : null;
+    return `<section class="rankblock ${park ? "park" : ""}" ${park ? `style="--park:${esc(park.bg)}"` : ""}>
+      <div class="${park ? "parkhead" : ""}">
       <div class="toolbar"><h3>${esc(s.comp)}</h3><span class="rankpill">${esc(t.name)} ${esc(s.myRank)}</span>
         <span class="grow"></span>${(sel ? sel.name : s.group) ? `<span class="muted">${esc(sel ? sel.name : s.group)}</span>` : ""}
         <a class="muted" href="${esc(s.src)}" target="_blank" rel="noopener">원본 ↗</a></div>
       ${picker}
+      ${park ? `<div class="parkname">${esc(park.name)}${BALLPARKS[LEAGUE_PARK[String((sel ? sel.name : s.group) || "").replace(/^.*->\s*/, "")] || TEAM_PARK[t.id]]?.image ? "" : " · 일러스트"}</div>` : ""}
+      </div>
       <div class="tblwrap"><table><thead><tr><th>순위</th><th class="l">팀</th>${s.cols.map(k => `<th>${RANK_COLS[k] || k}</th>`).join("")}</tr></thead>
       <tbody>${body}</tbody></table></div></section>`;
   }).join("");
